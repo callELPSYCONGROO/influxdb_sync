@@ -1,2 +1,10 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
+.idea
+*.xml
