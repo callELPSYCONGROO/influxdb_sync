@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+#  -*- coding: utf-8 -*-
 """
 Python-Tail - Unix tail follow implementation in Python.
 python-tail can be used to monitor changes to a file.

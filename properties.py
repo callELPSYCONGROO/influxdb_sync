@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+#! /usr/bin/env python
+#  -*- coding: utf-8 -*-
 """
     Properties：获取.properties配置文件属性
                 get_properties()获取全文
@@ -40,6 +41,7 @@ class Properties(object):
         return self.__properties
 
     def get(self, key):
+        """获取key对应的字符串"""
         p = self.__properties
         split = key.split('.')
         for k in split:
@@ -48,3 +50,12 @@ class Properties(object):
             except Exception, e:
                 raise e
         return p
+
+    def get_int(self, key):
+        return int(self.get(key))
+
+    def get_float(self, key):
+        return float(self.get(key))
+
+    def get_bool(self, key):
+        return bool(self.get(key))
