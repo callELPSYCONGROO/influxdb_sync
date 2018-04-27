@@ -31,38 +31,48 @@ def parse_body(body):
     body传入格式为：" cpu,host=serverF,region=us-west4 value=0.64 1434055562000000101"。
     :param body: 日志中插入记录的参数
     :return: 返回格式为：
-    {
-        "time": 1434055562000000101,
-        "dbtag": {
-                    "db": ceshi,
-                    "kv": {"host": "serverF", "region": "us-west4"}
-                },
-        "field": {
-                    "kv": {value: 0.64}
-                }
-    }
+            {
+            'time': '1434055562000000101',
+            'field': {
+                    'value': '0.64'
+                    },
+            'tag': {
+                    'region': 'us-west4',
+                    'host': 'serverF'
+                    },
+            'db': 'cpu'
+            }
     """
     pb = {}
     for index, value in enumerate(body.split()):
         if index == 0:
-            pb["dbtag"] = split_str(value)
+            pb["tag"] = split_tag(value)["tag"]
+            pb["db"] = split_tag(value)["db"]
         elif index == 1:
-            pb["field"] = split_str(value)
+            pb["field"] = split_field(value)
         elif index == 2:
             pb["time"] = value
     return pb
 
 
-def split_str(s):
+def split_tag(s):
     d = {}
     for m in (kv for kv in s.split(",")):
         m_split = m.split("=")
         if len(m_split) > 1:
-            if "kv" not in d:
-                d["kv"] = {}
-            d["kv"][m_split[0]] = m_split[1]
+            if "tag" not in d:
+                d["tag"] = {}
+            d["tag"][m_split[0]] = m_split[1]
         else:
             d["db"] = m_split[0]
+    return d
+
+
+def split_field(s):
+    d = {}
+    for m in (kv for kv in s.split(",")):
+        m_split = m.split("=")
+        d[m_split[0]] = m_split[1]
     return d
 
 
@@ -101,3 +111,9 @@ class Record(object):
             return WRITE
         else:
             return None
+
+    def get_body(self):
+        return self.__body
+
+    def get_form(self):
+        return self.__form

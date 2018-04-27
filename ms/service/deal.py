@@ -35,10 +35,8 @@ def query_deal(r):
 
 def write_deal(r):
     """处理write日志"""
-
-
-
-
+    __data2json(r.get_body())
+    form = r.get_form()
 
 
 def __get_slave_client():
@@ -49,22 +47,21 @@ def __get_slave_client():
                           properties.get_default_config("influxdb.slave.password"))
 
 
-def __data2json(data):
-    json_body = [
-        {
-            "measurement": "cpu",
-            "tags": {
-                "host": "serverA",
-                "region": "us-west1"
-            },
-            "fields": {
-                "Float_value": 0.64,
-                "Int_value": 3,
-                "String_value": "Text",
-                "Bool_value": True
-            }
-        }
-    ]
+def __data2json(body):
+    """
+    将日志参数转换为接口参数json对象
+    point = {
+            "measurement": "",
+            "tags": {},
+            "fields": {}
+    }
+    """
+    return [{
+        "measurement": body["dbtag"],
+        "tags": body["tag"],
+        "fields": body["field"],
+        "time": body["time"]
+    }]
 
 
 def __write_record(db, data):
