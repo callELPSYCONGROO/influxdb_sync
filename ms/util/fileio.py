@@ -4,6 +4,7 @@
 
 
 import codecs
+from ms.util import constant
 
 
 class FileIO(object):
@@ -18,3 +19,11 @@ class FileIO(object):
     def write(self, content, mode="w"):
         with codecs.open(self.file_path, mode) as f:
             f.write(content)
+
+
+def read_index():
+    return FileIO(constant.index_path).read()
+
+
+def write_index(index):
+    return FileIO(constant.index_path).write(index)

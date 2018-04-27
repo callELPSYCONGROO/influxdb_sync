@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from tasker import Tasker
+from ms.util.tasker import Tasker
 import time
 
 

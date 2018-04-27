@@ -6,6 +6,8 @@
                 get(key)获取key对应的值
 """
 
+from ms.util import constant
+
 
 class Properties(object):
 
@@ -42,7 +44,7 @@ class Properties(object):
 
     def get(self, key):
         """获取key对应的字符串"""
-        p = self.__properties
+        p = self.get_properties()
         split = key.split('.')
         for k in split:
             try:
@@ -59,3 +61,8 @@ class Properties(object):
 
     def get_bool(self, key):
         return bool(self.get(key))
+
+
+def get_default_config(key):
+    p = Properties(constant.config_path)
+    return p.get(key)

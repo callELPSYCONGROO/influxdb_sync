@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from tail import Tail
+from ms.util.tail import Tail
 
 
 def call_back_func(line):
