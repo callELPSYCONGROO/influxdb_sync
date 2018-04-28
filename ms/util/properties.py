@@ -4,6 +4,7 @@
     Properties：获取.properties配置文件属性
                 get_properties()获取全文
                 get(key)获取key对应的值
+    现在暂时不使用
 """
 
 from ms.util import constant
@@ -64,5 +65,5 @@ class Properties(object):
 
 
 def get_default_config(key):
-    p = Properties(constant.config_path)
+    p = Properties(constant.CONFIG_PATH)
     return p.get(key)

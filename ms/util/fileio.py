@@ -22,8 +22,15 @@ class FileIO(object):
 
 
 def read_index():
-    return FileIO(constant.index_path).read()
+    """读取索引"""
+    return FileIO(constant.INDEX_PATH).read()
 
 
 def write_index(index):
-    return FileIO(constant.index_path).write(index)
+    """覆盖索引"""
+    return FileIO(constant.INDEX_PATH).write(index)
+
+
+def write_log(log):
+    """向日志文件中写日志"""
+    return FileIO(constant.MS_LOG_PATH).write(log, mode="a+")

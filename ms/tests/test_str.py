@@ -39,3 +39,8 @@ print("*************")
 # print(re.search("\\w+", " precision:[ns] ").group())
 # print(re.search("(?<=\\[)\\w+(?=\\])", " precision:[ns] ").group())
 
+ss = '{"timeindex":1635.213,"host":"127.0.0.1","username":"-",method:"POST","path":"/query","uri":"/query?chunked=true&db=ceshi&epoch=ns&q=SELECT+%2A+FROM+cpu","form":"map[epoch:[ns] q:[SELECT * FROM cpu] chunked:[true] db:[ceshi]]","body":"","proto":"HTTP/1.1","status":"200","size":"539","referer":"-","agent":"InfluxDBShell/unknown","reqId":"81c862fd-4a86-11e8-8003-000000000000"}'
+# print(re.search("(?<=\"timeindex\":)\\w+.\\w+(?=,)", ss).group())
+
+t = '{"timeindex":704297975,"host":"127.0.0.1","username":"-","method":"POST","path":"/write","uri":"/write?consistency=all&db=ceshi&precision=ns&rp=","form":"map[consistency:[all] db:[ceshi] precision:[ns] rp:[]]","body":" cpu,host=serverA,region=us-west value=0.64,value2=0.86 1434055562000000200'
+print(re.search("(?<=\"timeindex\":)\\w+.\\w+(?=,)", t).group())

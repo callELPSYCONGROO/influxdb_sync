@@ -7,7 +7,9 @@ import ms.util.fileio as fileio
 
 f = FileIO("../../record/index.ms")
 print(f.read())
-f.write("a解放看")
+# f.write(123)
+f.write(str(123))
 print(f.read())
 
-print(fileio.read_index())
+# print(fileio.read_index())
+# print(fileio.write_index(1232))

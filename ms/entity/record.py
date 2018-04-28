@@ -4,34 +4,32 @@
 
 
 import re
+import json
 
 
 QUERY = "query"
 WRITE = "write"
 
 
-def parse_form(form):
+def _parse_form(form):
     """
     form字符串转换为dict对象。
      # kwargs["form"]格式：   map[precision:[ns] rp:[sdd] consistency:[all] db:[ceshi]]
     """
-    split = form[4:-1].split()
     d = {}
-    for kv in split:
+    for kv in form[4:-1].split():
         k = re.search("\\w+", kv).group()
-        print(k)
         v = re.search("(?<=\\[)\\w*(?=\\])", kv).group()
-        print(v)
         d[k] = v
     return d
 
 
-def parse_body(body):
+def _parse_body(body):
     """
     body传入格式为：" cpu,host=serverF,region=us-west4 value=0.64 1434055562000000101"。
     :param body: 日志中插入记录的参数
     :return: 返回格式为：
-            {
+            [{
             'time': '1434055562000000101',
             'field': {
                     'value': '0.64'
@@ -41,21 +39,26 @@ def parse_body(body):
                     'host': 'serverF'
                     },
             'db': 'cpu'
-            }
+            },
+            ...
+            ]
     """
-    pb = {}
-    for index, value in enumerate(body.split()):
-        if index == 0:
-            pb["tag"] = split_tag(value)["tag"]
-            pb["db"] = split_tag(value)["db"]
-        elif index == 1:
-            pb["field"] = split_field(value)
-        elif index == 2:
-            pb["time"] = value
-    return pb
+    bl = []
+    for ib in body.split(";"):
+        for index, value in enumerate(ib.split()):
+            pb = {}
+            if index == 0:
+                pb["tag"] = _split_tag(value)["tag"]
+                pb["db"] = _split_tag(value)["db"]
+            elif index == 1:
+                pb["field"] = _split_field(value)
+            elif index == 2:
+                pb["time"] = value
+            bl.append(pb)
+    return bl
 
 
-def split_tag(s):
+def _split_tag(s):
     d = {}
     for m in (kv for kv in s.split(",")):
         m_split = m.split("=")
@@ -68,7 +71,7 @@ def split_tag(s):
     return d
 
 
-def split_field(s):
+def _split_field(s):
     d = {}
     for m in (kv for kv in s.split(",")):
         m_split = m.split("=")
@@ -79,41 +82,38 @@ def split_field(s):
 class Record(object):
 
     def __init__(self, **kwargs):
-        self.__timeindex = kwargs["timeindex"]
-        self.__host = kwargs["host"]
-        self.__username = kwargs["username"]
-        self.__method = kwargs["method"]
-        self.__uri = kwargs["uri"]
-        self.__form = parse_form(kwargs["form"])
-        self.__path = kwargs["path"]
-        self.__params = kwargs["params"]
-        self.__proto = kwargs["proto"]
-        self.__body = parse_body(kwargs["body"])
-        self.__status = kwargs["status"]
-        self.__size = kwargs["size"]
-        self.__referer = kwargs["referer"]
-        self.__agent = kwargs["agent"]
-        self.__requestid = kwargs["reqId"]
+        self.timeindex = kwargs["timeindex"] if "timeindex" in kwargs else None
+        self.host = kwargs["host"] if "host" in kwargs else None
+        self.username = kwargs["username"] if "username" in kwargs else None
+        self.method = kwargs["method"] if "method" in kwargs else None
+        self.uri = kwargs["uri"] if "uri" in kwargs else None
+        self.form = _parse_form(kwargs["form"]) if "form" in kwargs else None
+        self.path = kwargs["path"] if "path" in kwargs else None
+        self.proto = kwargs["proto"] if "proto" in kwargs else None
+        self.body = _parse_body(kwargs["body"]) if "body" in kwargs else None
+        self.status = kwargs["status"] if "status" in kwargs else None
+        self.size = kwargs["size"] if "size" in kwargs else None
+        self.referer = kwargs["referer"] if "referer" in kwargs else None
+        self.agent = kwargs["agent"] if "agent" in kwargs else None
+        self.requestid = kwargs["reqId"] if "reqId" in kwargs else None
 
     def success(self):
         """判断此请求是否成功"""
-        if self.__username != "master2slave":
-            return False
-        if self.__status != "200" or self.__status != "204":
-            return False
-        return True
+        return self.status != "200" or self.status != "204"
 
     def sql_type(self):
         """判断日志SQL操作类型"""
-        if QUERY in self.__path:
+        if QUERY in self.path:
             return QUERY
-        elif WRITE in self.__path:
+        elif WRITE in self.path:
             return WRITE
         else:
             return None
 
-    def get_body(self):
-        return self.__body
 
-    def get_form(self):
-        return self.__form
+def bulid(json_str):
+    r = Record()
+    r.__dict__ = json.loads(json_str)
+    r.body = _parse_body(r.body)
+    r.form = _parse_form(r.form)
+    return r

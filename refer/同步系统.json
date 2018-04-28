@@ -1,0 +1,699 @@
+{
+	"version": "2.0",
+	"datas": [
+		{
+			"_className": "Q.Text",
+			"json": {
+				"name": "日志文件",
+				"styles": {
+					"label.background.color": "#2898e0",
+					"label.color": "#ffffff",
+					"label.padding": {
+						"_className": "Q.Insets",
+						"json": {
+							"top": 3,
+							"left": 5,
+							"bottom": 3,
+							"right": 5
+						}
+					},
+					"label.size": {
+						"_className": "Q.Size",
+						"json": {
+							"width": 143.083984375,
+							"height": 84.4
+						}
+					},
+					"label.font.size": 18
+				},
+				"location": {
+					"_className": "Q.Point",
+					"json": {
+						"x": 230,
+						"y": 10,
+						"rotate": 0
+					}
+				}
+			},
+			"_refId": "800"
+		},
+		{
+			"_className": "Q.Text",
+			"json": {
+				"name": "主机",
+				"styles": {
+					"label.background.color": "#2898e0",
+					"label.color": "#ffffff",
+					"label.padding": {
+						"_className": "Q.Insets",
+						"json": {
+							"top": 3,
+							"left": 5,
+							"bottom": 3,
+							"right": 5
+						}
+					},
+					"label.size": {
+						"_className": "Q.Size",
+						"json": {
+							"width": 136.083984375,
+							"height": 89.4
+						}
+					},
+					"label.font.size": 18
+				},
+				"location": {
+					"_className": "Q.Point",
+					"json": {
+						"x": 220,
+						"y": -150,
+						"rotate": 0
+					}
+				}
+			},
+			"_refId": "801"
+		},
+		{
+			"_className": "Q.Edge",
+			"json": {
+				"name": "记录",
+				"styles": {
+					"edge.to.offset": {
+						"x": -12,
+						"y": -3
+					},
+					"arrow.to": true,
+					"label.color": "#ffffff",
+					"label.background.color": "#2898e0"
+				},
+				"from": {
+					"_ref": 801
+				},
+				"to": {
+					"_ref": 800
+				}
+			}
+		},
+		{
+			"_className": "Q.Text",
+			"json": {
+				"name": "从机",
+				"styles": {
+					"label.background.color": "#2898e0",
+					"label.color": "#ffffff",
+					"label.padding": {
+						"_className": "Q.Insets",
+						"json": {
+							"top": 3,
+							"left": 5,
+							"bottom": 3,
+							"right": 5
+						}
+					},
+					"label.size": {
+						"_className": "Q.Size",
+						"json": {
+							"width": 132.083984375,
+							"height": 89.4
+						}
+					},
+					"label.font.size": 18
+				},
+				"location": {
+					"_className": "Q.Point",
+					"json": {
+						"x": 710,
+						"y": -150,
+						"rotate": 0
+					}
+				}
+			},
+			"_refId": "803"
+		},
+		{
+			"_className": "Q.Text",
+			"json": {
+				"name": "监听模块",
+				"styles": {
+					"label.background.color": "#2898e0",
+					"label.color": "#ffffff",
+					"label.padding": {
+						"_className": "Q.Insets",
+						"json": {
+							"top": 3,
+							"left": 5,
+							"bottom": 3,
+							"right": 5
+						}
+					},
+					"label.size": {
+						"_className": "Q.Size",
+						"json": {
+							"width": 132.083984375,
+							"height": 88.4
+						}
+					},
+					"label.font.size": 18
+				},
+				"location": {
+					"_className": "Q.Point",
+					"json": {
+						"x": 470,
+						"y": -150,
+						"rotate": 0
+					}
+				}
+			},
+			"_refId": "804"
+		},
+		{
+			"_className": "Q.Edge",
+			"json": {
+				"name": "监听",
+				"styles": {
+					"arrow.to": true,
+					"label.color": "#ffffff",
+					"label.background.color": "#2898e0",
+					"edge.to.offset": {
+						"x": 40.48362906508102,
+						"y": 0
+					}
+				},
+				"from": {
+					"_ref": 804
+				},
+				"to": {
+					"_ref": 801
+				}
+			}
+		},
+		{
+			"_className": "Q.Text",
+			"json": {
+				"name": "数据处理",
+				"styles": {
+					"label.background.color": "#2898e0",
+					"label.color": "#ffffff",
+					"label.padding": {
+						"_className": "Q.Insets",
+						"json": {
+							"top": 3,
+							"left": 5,
+							"bottom": 3,
+							"right": 5
+						}
+					},
+					"label.size": {
+						"_className": "Q.Size",
+						"json": {
+							"width": 134.083984375,
+							"height": 87.4
+						}
+					},
+					"label.font.size": 18
+				},
+				"location": {
+					"_className": "Q.Point",
+					"json": {
+						"x": 470,
+						"y": 10,
+						"rotate": 0
+					}
+				}
+			},
+			"_refId": "806"
+		},
+		{
+			"_className": "Q.Edge",
+			"json": {
+				"name": "获取改变",
+				"styles": {
+					"arrow.to": true,
+					"label.color": "#ffffff",
+					"label.background.color": "#2898e0"
+				},
+				"from": {
+					"_ref": 806
+				},
+				"to": {
+					"_ref": 800
+				}
+			}
+		},
+		{
+			"_className": "Q.Edge",
+			"json": {
+				"name": "监听",
+				"styles": {
+					"arrow.to": true,
+					"label.color": "#ffffff",
+					"label.background.color": "#2898e0"
+				},
+				"from": {
+					"_ref": 804
+				},
+				"to": {
+					"_ref": 803
+				}
+			}
+		},
+		{
+			"_className": "Q.Edge",
+			"json": {
+				"name": "写入",
+				"styles": {
+					"arrow.to": true,
+					"label.color": "#ffffff",
+					"label.background.color": "#2898e0",
+					"edge.to.offset": {
+						"x": -70.47325551664744,
+						"y": 39.60426379063841
+					}
+				},
+				"from": {
+					"_ref": 806
+				},
+				"to": {
+					"_ref": 803
+				}
+			}
+		},
+		{
+			"_className": "Q.Node",
+			"json": {
+				"styles": {
+					"border.width": 0.00001
+				},
+				"location": {
+					"_className": "Q.Point",
+					"json": {
+						"x": 230,
+						"y": -60,
+						"rotate": 0
+					}
+				},
+				"size": {
+					"_className": "Q.Size",
+					"json": {
+						"width": 200.14254184204268,
+						"height": 339.04326915154485
+					}
+				},
+				"image": "rect"
+			}
+		},
+		{
+			"_className": "Q.Node",
+			"json": {
+				"styles": {
+					"border.width": 0.001
+				},
+				"location": {
+					"_className": "Q.Point",
+					"json": {
+						"x": 470,
+						"y": -60,
+						"rotate": 0
+					}
+				},
+				"size": {
+					"_className": "Q.Size",
+					"json": {
+						"width": 208.5184650968869,
+						"height": 341.13724996525576
+					}
+				},
+				"image": "rect"
+			},
+			"_refId": "811"
+		},
+		{
+			"_className": "Q.Node",
+			"json": {
+				"styles": {
+					"border.width": 0.001
+				},
+				"location": {
+					"_className": "Q.Point",
+					"json": {
+						"x": 710,
+						"y": -58.657603925731735,
+						"rotate": 0
+					}
+				},
+				"size": {
+					"_className": "Q.Size",
+					"json": {
+						"width": 182.69270172778357,
+						"height": 339.3922659538297
+					}
+				},
+				"image": "rect"
+			},
+			"_refId": "812"
+		},
+		{
+			"_className": "Q.Text",
+			"json": {
+				"name": "主机",
+				"styles": {
+					"label.background.color": "#a2c2d6",
+					"label.color": "#ffffff",
+					"label.padding": {
+						"_className": "Q.Insets",
+						"json": {
+							"top": 3,
+							"left": 5,
+							"bottom": 3,
+							"right": 5
+						}
+					}
+				},
+				"location": {
+					"x": 140,
+					"y": -250
+				}
+			}
+		},
+		{
+			"_className": "Q.Text",
+			"json": {
+				"name": "同步程序",
+				"styles": {
+					"label.background.color": "#8ba3b8",
+					"label.color": "#FFF",
+					"label.padding": {
+						"_className": "Q.Insets",
+						"json": {
+							"top": 3,
+							"left": 5,
+							"bottom": 3,
+							"right": 5
+						}
+					}
+				},
+				"location": {
+					"x": 400,
+					"y": -250
+				}
+			}
+		},
+		{
+			"_className": "Q.Text",
+			"json": {
+				"name": "从机",
+				"styles": {
+					"label.background.color": "#b2cbe3",
+					"label.color": "#FFF",
+					"label.padding": {
+						"_className": "Q.Insets",
+						"json": {
+							"top": 3,
+							"left": 5,
+							"bottom": 3,
+							"right": 5
+						}
+					}
+				},
+				"location": {
+					"x": 640,
+					"y": -250
+				}
+			}
+		},
+		{
+			"_className": "Q.Edge",
+			"json": {
+				"name": "正常",
+				"styles": {
+					"edge.to.offset": {
+						"x": -0.6979936045703623,
+						"y": 0.6979936045703623
+					},
+					"arrow.to": true,
+					"label.color": "#ffffff",
+					"label.background.color": "#2898e0"
+				},
+				"from": {
+					"_ref": 804
+				},
+				"to": {
+					"_ref": 806
+				}
+			}
+		},
+		{
+			"_className": "Q.Text",
+			"json": {
+				"name": "数据源",
+				"styles": {
+					"label.background.color": "#2898e0",
+					"label.color": "#ffffff",
+					"label.padding": {
+						"_className": "Q.Insets",
+						"json": {
+							"top": 3,
+							"left": 5,
+							"bottom": 3,
+							"right": 5
+						}
+					},
+					"label.font.size": 18,
+					"label.size": {
+						"_className": "Q.Size",
+						"json": {
+							"width": 141.10960185038132,
+							"height": 62.432625867366184
+						}
+					}
+				},
+				"location": {
+					"_className": "Q.Point",
+					"json": {
+						"x": 220,
+						"y": -330,
+						"rotate": 0
+					}
+				}
+			},
+			"_refId": "1080"
+		},
+		{
+			"_className": "Q.Edge",
+			"json": {
+				"name": "写入",
+				"styles": {
+					"edge.to.offset": {
+						"x": -1.814783371882942,
+						"y": -0.907391685941471
+					},
+					"label.color": "#ffffff",
+					"label.background.color": "#2898e0",
+					"edge.from.offset": {
+						"x": -0.907391685941471,
+						"y": 0
+					},
+					"arrow.to": true
+				},
+				"from": {
+					"_ref": 1080
+				},
+				"to": {
+					"_ref": 801
+				}
+			}
+		},
+		{
+			"_className": "Q.Text",
+			"json": {
+				"name": "记录",
+				"styles": {
+					"label.background.color": "#2898E0",
+					"label.color": "#FFF",
+					"label.padding": {
+						"_className": "Q.Insets",
+						"json": {
+							"top": 3,
+							"left": 5,
+							"bottom": 3,
+							"right": 5
+						}
+					},
+					"label.size": {
+						"_className": "Q.Size",
+						"json": {
+							"width": 133.0635950020351,
+							"height": 44.34392563606855
+						}
+					},
+					"label.font.size": 18
+				},
+				"location": {
+					"_className": "Q.Point",
+					"json": {
+						"x": 460,
+						"y": 220.94477459522903,
+						"rotate": 0
+					}
+				}
+			},
+			"_refId": "1891"
+		},
+		{
+			"_className": "Q.Edge",
+			"json": {
+				"name": "操作记录",
+				"styles": {
+					"edge.to.offset": {
+						"x": -2.7221750578244133,
+						"y": -0.907391685941471
+					},
+					"arrow.to": true,
+					"label.color": "#333333",
+					"edge.from.offset": {
+						"x": -7.107517089223279,
+						"y": 163.18123287230998
+					}
+				},
+				"from": {
+					"_ref": 811
+				},
+				"to": {
+					"_ref": 1891
+				}
+			}
+		},
+		{
+			"_className": "Q.Edge",
+			"json": {
+				"name": "启动记录",
+				"styles": {
+					"arrow.to": true,
+					"label.color": "#333333",
+					"edge.from.offset": {
+						"x": 29.943925636068542,
+						"y": 99.81308545356181
+					}
+				},
+				"from": {
+					"_ref": 800
+				},
+				"to": {
+					"_ref": 1891
+				}
+			}
+		},
+		{
+			"_className": "Q.Edge",
+			"json": {
+				"name": "启动记录",
+				"styles": {
+					"arrow.to": true,
+					"label.color": "#333333",
+					"edge.from.offset": {
+						"x": -28.21672269595763,
+						"y": 169.58656580877266
+					}
+				},
+				"from": {
+					"_ref": 812
+				},
+				"to": {
+					"_ref": 1891
+				}
+			}
+		},
+		{
+			"_className": "Q.Text",
+			"json": {
+				"name": "记录DB启停及同步状态和时间，切换DB时使用",
+				"styles": {
+					"label.background.color": "#d69191",
+					"label.color": "#FFF",
+					"label.padding": {
+						"_className": "Q.Insets",
+						"json": {
+							"top": 3,
+							"left": 5,
+							"bottom": 3,
+							"right": 5
+						}
+					},
+					"label.size": {
+						"_className": "Q.Size",
+						"json": {
+							"width": 186.8161702358144,
+							"height": 14.399999999999999
+						}
+					}
+				},
+				"location": {
+					"_className": "Q.Point",
+					"json": {
+						"x": 480,
+						"y": 260,
+						"rotate": 0
+					}
+				}
+			}
+		},
+		{
+			"_className": "Q.Text",
+			"json": {
+				"name": "日志文件",
+				"styles": {
+					"label.background.color": "#2898E0",
+					"label.color": "#FFF",
+					"label.padding": {
+						"_className": "Q.Insets",
+						"json": {
+							"top": 3,
+							"left": 5,
+							"bottom": 3,
+							"right": 5
+						}
+					},
+					"label.size": {
+						"_className": "Q.Size",
+						"json": {
+							"width": 139.41533680362534,
+							"height": 89.71350993314215
+						}
+					},
+					"label.font.size": 18
+				},
+				"location": {
+					"_className": "Q.Point",
+					"json": {
+						"x": 710,
+						"y": 10,
+						"rotate": 0
+					}
+				}
+			},
+			"_refId": "13077"
+		},
+		{
+			"_className": "Q.Edge",
+			"json": {
+				"name": "记录",
+				"styles": {
+					"edge.to.offset": {
+						"x": -1.814783371882942,
+						"y": 0
+					},
+					"arrow.to": true
+				},
+				"from": {
+					"_ref": 803
+				},
+				"to": {
+					"_ref": 13077
+				}
+			}
+		}
+	],
+	"scale": 1.1020599102827822,
+	"tx": 47.718597966621246,
+	"ty": 441.41656129633674
+}
