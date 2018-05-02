@@ -39,7 +39,7 @@ def process(oneline):
     except Exception, e:
         now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         result = "SUCCESS" if e is None else "FAIL"
-        msg = repr(e) if e is None else ""
+        msg = e.message
         fileio.write_log("%s %s %s %s" % (now, r.timeindex, result, msg))
         return None
     print("-----------------------》处理日志完成")
@@ -49,9 +49,7 @@ def query_deal(r):
     """处理query日志"""
     form = r.form
     # 不是CREATE、DROP和DELETE的语句就跳过
-    if constant.CREATE not in form["q"].upper() \
-            or constant.DROP not in form["q"].upper() \
-            or constant.DELETE not in form["q"].upper():
+    if ((constant.CREATE in form["q"].upper()) or (constant.DROP in form["q"].upper()) or (constant.DELETE in form["q"].upper())) is False:
         return None
     client = _get_slave_client()
     client.switch_database(form["db"])
@@ -69,7 +67,7 @@ def write_deal(r):
     form = r.form
     client.switch_database(form["db"])
     client.write_points(_data2json(r.body),
-                        time_precision=form["precision"] if "precision" in form else None,
+                        time_precision=r.get_time_precision() if "precision" in form else None,
                         database=form["db"] if "db" in form else None,
                         retention_policy=form["rp"] if "rp" in form else None)
     print("写入完成。。。")

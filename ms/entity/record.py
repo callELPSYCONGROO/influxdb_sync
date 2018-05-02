@@ -17,9 +17,10 @@ def _parse_form(form):
      # kwargs["form"]格式：   map[precision:[ns] rp:[sdd] consistency:[all] db:[ceshi]]
     """
     d = {}
-    for kv in form[4:-1].split():
+    split = form[4:-2].split("] ")
+    for kv in split:
         k = re.search("\\w+", kv).group()
-        v = re.search("(?<=\\[)\\w*(?=\\])", kv).group()
+        v = re.search("(?<=\\[)[\\s\\S]*", kv, flags=re.IGNORECASE).group()
         d[k] = v
     return d
 
@@ -109,6 +110,9 @@ class Record(object):
             return WRITE
         else:
             return None
+
+    def get_time_precision(self):
+        return "n" if self.form["precision"] == "ns" else None
 
 
 def bulid(json_str):

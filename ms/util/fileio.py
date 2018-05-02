@@ -33,4 +33,4 @@ def write_index(index):
 
 def write_log(log):
     """向日志文件中写日志"""
-    return FileIO(constant.MS_LOG_PATH).write(log, mode="a+")
+    return FileIO(constant.MS_LOG_PATH).write(log + " \n", mode="a+")
