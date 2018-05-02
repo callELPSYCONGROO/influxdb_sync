@@ -22,12 +22,12 @@ class FileIO(object):
 
 
 def read_index():
-    """读取索引"""
+    """暂未使用，读取索引"""
     return FileIO(constant.INDEX_PATH).read()
 
 
 def write_index(index):
-    """覆盖索引"""
+    """暂未使用，覆盖索引"""
     return FileIO(constant.INDEX_PATH).write(index)
 
 

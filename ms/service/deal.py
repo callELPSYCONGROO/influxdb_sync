@@ -19,10 +19,10 @@ def process(oneline):
         fileio.print_msg("构建日志对象完成。。。")
     except Exception, e:
         fileio.print_msg("发生异常：", e.message)
-        now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         timeindex_ = re.search("(?<=\"timeindex\":)\\w+.\\w+(?=,)", oneline).group()
+        now = time.strftime("%Y-%m-%d_%H:%M:%S", time.localtime())
         result = "SUCCESS" if e is None else "FAIL"
-        msg = repr(e) if e is None else ""
+        msg = e.message
         fileio.write_log("%s %s %s %s" % (now, timeindex_, result, msg))
         fileio.print_msg("---------------------------》日志处理异常")
         return None
@@ -39,7 +39,8 @@ def process(oneline):
             fileio.print_msg("执行查询。。。")
             query_deal(r)
     except Exception, e:
-        now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        fileio.print_msg("发生异常：", e.message)
+        now = time.strftime("%Y-%m-%d_%H:%M:%S", time.localtime())
         result = "SUCCESS" if e is None else "FAIL"
         msg = e.message
         fileio.write_log("%s %s %s %s" % (now, r.timeindex, result, msg))
