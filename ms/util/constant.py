@@ -9,17 +9,20 @@ INDEX_PATH = "./record/index.ms"
 MS_LOG_PATH = "./logs/ms.log"
 
 # 主机日志文件路径
-INFLUXDB_MASTER_LOG = "/usr/software/logs/http.log"
+INFLUXDB_MASTER_LOG = ""
 # 从机HOST
-INFLUXDB_SLAVE_HOST = "118.24.160.252"
+INFLUXDB_SLAVE_HOST = ""
 # 从机PORT
 INFLUXDB_SLAVE_PORT = "8086"
 # 从机用户名
-INFLUXDB_SLAVE_USER = "ims"
+INFLUXDB_SLAVE_USER = ""
 # 从机密码
-INFLUXDB_SLAVE_PASSWORD = "ims"
+INFLUXDB_SLAVE_PASSWORD = ""
 
 # SQL 关键字
 CREATE = "CREATE"
 DROP = "DROP"
 DELETE = "DELETE"
+
+# 运行模式，test时显示控制台打印，其他值不显示
+MODEL = "test"

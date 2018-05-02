@@ -46,15 +46,16 @@ def _parse_body(body):
     """
     bl = []
     for ib in body.split(";"):
+        pb = {}
         for index, value in enumerate(ib.split()):
-            pb = {}
             if index == 0:
                 pb["tag"] = _split_tag(value)["tag"]
                 pb["db"] = _split_tag(value)["db"]
             elif index == 1:
                 pb["field"] = _split_field(value)
             elif index == 2:
-                pb["time"] = value
+                pb["time"] = int(value)
+        if len(pb) > 0:
             bl.append(pb)
     return bl
 
@@ -113,6 +114,9 @@ class Record(object):
 
     def get_time_precision(self):
         return "n" if self.form["precision"] == "ns" else None
+
+    def get_rp(self):
+        return self.form["rp"] if self.form["rp"] else None
 
 
 def bulid(json_str):

@@ -11,38 +11,41 @@ from influxdb import InfluxDBClient
 
 
 def process(oneline):
-    print("开始处理日志-----------------》")
+    fileio.print_msg("开始处理日志-----------------》")
     """处理日志记录"""
     try:
-        print("构建日志对象。。。")
+        fileio.print_msg("构建日志对象。。。")
         r = record.bulid(oneline)
-        print("构建日志对象完成。。。")
+        fileio.print_msg("构建日志对象完成。。。")
     except Exception, e:
+        fileio.print_msg("发生异常：", e.message)
         now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         timeindex_ = re.search("(?<=\"timeindex\":)\\w+.\\w+(?=,)", oneline).group()
         result = "SUCCESS" if e is None else "FAIL"
         msg = repr(e) if e is None else ""
         fileio.write_log("%s %s %s %s" % (now, timeindex_, result, msg))
+        fileio.print_msg("---------------------------》日志处理异常")
         return None
 
-    print("检查日志状态。。。。。")
+    fileio.print_msg("检查日志状态。。。。。")
     if not r.success():
         return None
-    print("日志成功。。。。。")
+    fileio.print_msg("日志成功。。。。。")
     try:
         if record.WRITE == r.sql_type():
-            print("执行写入。。。")
+            fileio.print_msg("执行写入。。。")
             write_deal(r)
         elif record.QUERY == r.sql_type():
-            print("执行查询。。。")
+            fileio.print_msg("执行查询。。。")
             query_deal(r)
     except Exception, e:
         now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         result = "SUCCESS" if e is None else "FAIL"
         msg = e.message
         fileio.write_log("%s %s %s %s" % (now, r.timeindex, result, msg))
+        fileio.print_msg("---------------------------》日志处理异常")
         return None
-    print("-----------------------》处理日志完成")
+    fileio.print_msg("-----------------------》处理日志完成")
 
 
 def query_deal(r):
@@ -57,7 +60,7 @@ def query_deal(r):
                  epoch=form["epoch"] if "epoch" in form else None,
                  database=form["db"] if "db" in form else None,
                  chunked=bool(form["chunked"]) if "chunked" in form else False)
-    print("查询完成。。。")
+    fileio.print_msg("查询完成。。。")
     fileio.write_index(str(r.timeindex))
 
 
@@ -70,7 +73,7 @@ def write_deal(r):
                         time_precision=r.get_time_precision() if "precision" in form else None,
                         database=form["db"] if "db" in form else None,
                         retention_policy=form["rp"] if "rp" in form else None)
-    print("写入完成。。。")
+    fileio.print_msg("写入完成。。。")
     fileio.write_index(str(r.timeindex))
 
 
