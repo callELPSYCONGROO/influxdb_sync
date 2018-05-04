@@ -19,8 +19,12 @@ def _parse_form(form):
     d = {}
     split = form[4:-2].split("] ")
     for kv in split:
-        k = re.search("\\w+", kv).group()
-        v = re.search("(?<=\\[)[\\s\\S]*", kv, flags=re.IGNORECASE).group()
+        try:
+            k = re.search("\\w+", kv).group()
+            v = re.search("(?<=\\[)[\\s\\S]*", kv, flags=re.IGNORECASE).group()
+        except AttributeError:
+            continue
+
         d[k] = v
     return d
 
@@ -101,7 +105,7 @@ class Record(object):
 
     def success(self):
         """判断此请求是否成功"""
-        return self.status != "200" or self.status != "204"
+        return self.status == "200" or self.status == "204"
 
     def sql_type(self):
         """判断日志SQL操作类型"""
@@ -113,7 +117,7 @@ class Record(object):
             return None
 
     def get_time_precision(self):
-        return "n" if self.form["precision"] == "ns" else None
+        return "n" if self.form["precision"] == "ns" else self.form["precision"]
 
     def get_rp(self):
         return self.form["rp"] if self.form["rp"] else None

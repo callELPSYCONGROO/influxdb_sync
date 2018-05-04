@@ -29,6 +29,7 @@ def process(oneline):
 
     fileio.print_msg("检查日志状态。。。。。")
     if not r.success():
+        fileio.print_msg("日志状态不成功------------------------》结束日志处理")
         return None
     fileio.print_msg("日志成功。。。。。")
     try:

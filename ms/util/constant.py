@@ -9,15 +9,15 @@ INDEX_PATH = "./record/index.ms"
 MS_LOG_PATH = "./logs/ms.log"
 
 # 主机日志文件路径
-INFLUXDB_MASTER_LOG = ""
+INFLUXDB_MASTER_LOG = "/usr/software/logs/http.log"
 # 从机HOST
-INFLUXDB_SLAVE_HOST = ""
+INFLUXDB_SLAVE_HOST = "120.79.70.87"
 # 从机PORT
 INFLUXDB_SLAVE_PORT = "8086"
 # 从机用户名
-INFLUXDB_SLAVE_USER = ""
+INFLUXDB_SLAVE_USER = "ims"
 # 从机密码
-INFLUXDB_SLAVE_PASSWORD = ""
+INFLUXDB_SLAVE_PASSWORD = "ims"
 
 # SQL 关键字
 CREATE = "CREATE"
