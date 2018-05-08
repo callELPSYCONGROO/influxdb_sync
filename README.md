@@ -2,13 +2,16 @@
 > InfluxDB主从同步
 
 ### 介绍
+
 该项目实现了InfluxDB的主从同步。
+
+主从同步结构参考了[MySQL主从同步的实现](https://blog.csdn.net/linuxlsq/article/details/52606292)，进行了部分简化。使用InfluxDB内部日志记录增删改查数据，使用Python脚本将日志过滤后，增删改记录同步到从库中。
 
 > 拓扑图
 
-![InfluxDB同步系统](https://github.com/callELPSYCONGROO/master_slave/blob/master/refer/InfluxDB%E5%90%8C%E6%AD%A5%E7%B3%BB%E7%BB%9F.png?raw=true)
+![InfluxDB同步系统](refer/InfluxDB同步系统.png)
 
-**实现单边主从同步，只需要在主机侧启动该项目脚本。该项目需要结合[我的InfluxDB](https://github.com/callELPSYCONGROO/influxdb)使用。**
+**实现单边主从同步，只需要在主机侧启动该项目脚本。该项目需要结合修改过后的[InfluxDB](https://github.com/callELPSYCONGROO/influxdb)使用。**
 
 ### 启动运行
 
