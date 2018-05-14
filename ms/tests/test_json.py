@@ -2,10 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-import re
-import json
 import ms.entity.record as record
-from ms.util import constant
 
 f = "map[precision:[ns] rp:[sdd] consistency:[all] db:[ceshi]]"
 b = " cpu,host=serverF,region=us-west4 value=0.64 1434055562000000101"

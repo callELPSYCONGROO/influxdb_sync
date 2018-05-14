@@ -4,7 +4,7 @@
 
 
 import codecs
-from ms.util import constant
+from ms import config
 
 
 class FileIO(object):
@@ -23,19 +23,19 @@ class FileIO(object):
 
 def read_index():
     """暂未使用，读取索引"""
-    return FileIO(constant.INDEX_PATH).read()
+    return FileIO(config.INDEX_PATH).read()
 
 
 def write_index(index):
     """暂未使用，覆盖索引"""
-    return FileIO(constant.INDEX_PATH).write(index)
+    return FileIO(config.INDEX_PATH).write(index)
 
 
 def write_log(log):
     """向日志文件中写日志"""
-    return FileIO(constant.MS_LOG_PATH).write(log + " \n", mode="a+")
+    return FileIO(config.MS_LOG_PATH).write(log + " \n", mode="a+")
 
 
 def print_msg(msg):
-    if constant.MODEL == "test":
+    if config.MODEL == "test":
         print(msg)

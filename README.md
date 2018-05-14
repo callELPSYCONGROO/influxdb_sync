@@ -11,12 +11,11 @@
 
 ![InfluxDB同步系统](refer/InfluxDB同步系统.png)
 
-**实现单边主从同步，只需要在主机侧启动该项目脚本。该项目需要结合修改过后的[InfluxDB](https://github.com/callELPSYCONGROO/influxdb)使用。**
+**实现单边主从同步，只需要在主机侧启动该项目脚本。该项目需要结合修改过后的[InfluxDB](https://gitlab.bicitech.cn/qt/influxdb)使用。**
 
 ### 启动运行
 
 * 下载该项目，实际上需要的文件为：
-    * /logs/**
     * /ms/**
     * /main.py
     
@@ -24,7 +23,7 @@
 
 * 配置脚本：
 
-    * 打开配置文件 ms/util/constant.py
+    * 打开配置文件 ms/config.py
     
     * 修改以下配置为你的配置
         * 主机日志文件路径 INFLUXDB_MASTER_LOG，这个文件是Influxdb配置文件中配置的记录http请求的日志文件（access-log-path对应的那个文件）

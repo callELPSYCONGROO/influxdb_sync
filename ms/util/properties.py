@@ -7,7 +7,7 @@
     现在暂时不使用
 """
 
-from ms.util import constant
+from ms import config
 
 
 class Properties(object):
@@ -65,5 +65,5 @@ class Properties(object):
 
 
 def get_default_config(key):
-    p = Properties(constant.CONFIG_PATH)
+    p = Properties(config.CONFIG_PATH)
     return p.get(key)

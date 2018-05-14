@@ -3,7 +3,7 @@
 """常量"""
 # 配置文件路径，现在暂时不使用
 CONFIG_PATH = "./config/config.properties"
-# 索引文件路径
+# 索引文件路径，现在暂时不使用
 INDEX_PATH = "./record/index.ms"
 # 主从复制系统日志文件路径
 MS_LOG_PATH = "./logs/ms.log"

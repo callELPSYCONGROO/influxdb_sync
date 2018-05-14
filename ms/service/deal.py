@@ -5,8 +5,8 @@
 import time
 import re
 import ms.entity.record as record
-import ms.util.constant as constant
 import ms.util.fileio as fileio
+from ms import config
 from influxdb import InfluxDBClient
 
 
@@ -54,7 +54,8 @@ def query_deal(r):
     """处理query日志"""
     form = r.form
     # 不是CREATE、DROP和DELETE的语句就跳过
-    if ((constant.CREATE in form["q"].upper()) or (constant.DROP in form["q"].upper()) or (constant.DELETE in form["q"].upper())) is False:
+    if ((config.CREATE in form["q"].upper()) or (config.DROP in form["q"].upper()) or (
+            config.DELETE in form["q"].upper())) is False:
         return None
     client = _get_slave_client()
     client.switch_database(form["db"])
@@ -81,10 +82,10 @@ def write_deal(r):
 
 def _get_slave_client():
     """获取从库链接客户端"""
-    return InfluxDBClient(constant.INFLUXDB_SLAVE_HOST,
-                          constant.INFLUXDB_SLAVE_PORT,
-                          constant.INFLUXDB_SLAVE_USER,
-                          constant.INFLUXDB_SLAVE_PASSWORD)
+    return InfluxDBClient(config.INFLUXDB_SLAVE_HOST,
+                          config.INFLUXDB_SLAVE_PORT,
+                          config.INFLUXDB_SLAVE_USER,
+                          config.INFLUXDB_SLAVE_PASSWORD)
 
 
 def _data2json(body):
