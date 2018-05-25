@@ -1,5 +1,5 @@
-# master_slave
-> InfluxDB主从同步
+# influxdb_sync
+> InfluxDB主从同步脚本
 
 ### 介绍
 
@@ -11,7 +11,7 @@
 
 ![InfluxDB同步系统](refer/InfluxDB同步系统.png)
 
-**实现单边主从同步，只需要在主机侧启动该项目脚本。该项目需要结合修改过后的[InfluxDB](https://gitlab.bicitech.cn/qt/influxdb)使用。**
+**实现单边主从同步，只需要在主机侧启动该项目脚本。该项目需要结合修改过后的[InfluxDB](https://github.com/callELPSYCONGROO/influxdb)使用。**
 
 ### 启动运行
 
